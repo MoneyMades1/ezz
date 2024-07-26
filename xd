@@ -39,7 +39,7 @@ getgenv().Evolution = {
             ["FPS"] = 999, -- // Maximum FPS
         },
         ["Intro"] = false, -- // Will show a short intro
-        ["Stats"] = true, -- // Shows debug stats 
+        ["Stats"] = false, -- // Shows debug stats 
         ["Auto Join Discord"] = false, -- // Will Join Discord
         ["Allow Notifications"] = false, -- // Toggles all notifications
         ["Notifcation Type"] = "xaxa", -- // Akali, Roblox, xaxa
