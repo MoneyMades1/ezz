@@ -2,9 +2,9 @@ local HWID = game:GetService("RbxAnalyticsService"):GetClientId();
 
 local WhitelistedHWIDs = 
 {
-    "458A47DA-A824-4CAF-B46A-21C6FA33D725", --- ZNX
+    "A0C5A190-7322-472B-BCCB-D3CA550F2DBE", --- ZNX
     "17B39A2C-E19E-495D-8D43-CF58EE9935D8", --- zkoriak
-    "A0C5A190-7322-472B-BCCB-D3CA550F2DBE", --- wazzy
+    "458A47DA-A824-4CAF-B46A-21C6FA33D725", --- wazzy
 }
 
 local qNVAKkuwxNpqruLjSRHg = false
