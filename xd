@@ -40,7 +40,7 @@ getgenv().Evolution = {
         },
         ["Intro"] = false, -- // Will show a short intro
         ["Stats"] = false, -- // Shows debug stats 
-        ["Auto Join Discord"] = false, -- // Will Join Discord
+
         ["Allow Notifications"] = false, -- // Toggles all notifications
         ["Notifcation Type"] = "xaxa", -- // Akali, Roblox, xaxa
         ["Notifcation Duration"] = 3, -- // How long notifcations will show
@@ -206,14 +206,14 @@ getgenv().Evolution = {
         },
     },
     ["Gun Sorting"] = {
-        ["Enabled"] = false, -- // Sorts the guns in your inventory
+        ["Enabled"] = true, -- // Sorts the guns in your inventory
         ["Bind"] = "Z", -- // Keybind to sort
-        ["Delete Extra"] = false, -- // Will destroy any tools that are not sorted (broken)
+        ["Delete Extra"] = true, -- // Will destroy any tools that are not sorted (broken)
         ["Slots"] = { -- // You can add up to 9
-            "[Double-Barrel SG]",
             "[Revolver]",
+            "[Double-Barrel SG]",
             "[TacticalShotgun]",
-            "[Shotgun]",
+            "[Knife]",
             "[Katana]",
         }
     },
@@ -230,7 +230,7 @@ getgenv().Evolution = {
         ["Duration"] = 1, -- // How long you will be spiked for
     },
     ["Panic"] = {
-        ["Enabled"] = false, -- // Will disable all features
+        ["Enabled"] = true, -- // Will disable all features
         ["Bind"] = "P", -- // Keybind to panic
         ["Things To Disable"] = {
             ["Options"] = true, -- // Stats, Notifications
@@ -278,7 +278,6 @@ getgenv().Evolution = {
             ["SizeFOV"] = "radius", -- // ex; $radius 100
             ["GotoLocation"] = "tp", -- // ex; $tp bank (locations in server)
             ["ToggleResolver"] = "resolver", -- // ex; $resolver true (you can also do "on" or "yes" and to disable you do "off" or "yes" or "false")
-            ["JoinDiscord"] = "discord", -- // ex; $discord
             ["RejoinServer"] = "rj", -- // ex; $rj
             ["ToggleSilentAim"] = "silent", -- // ex; $silent true (you can also do "on" or "yes" and to disable you do "off" or "yes" or "false")
             ["ToggleCamLock"] = "camlock", -- // ex; $camlock true (you can also do "on" or "yes" and to disable you do "off" or "yes" or "false")
@@ -369,15 +368,6 @@ if table.find(Blacklisted_GameIds,game.PlaceId) then
 end
 
 
-if Evolution.Options.Version ~= utility.Version then 
-    game:GetService("StarterGui"):SetCore("SendNotification",{
-        Title = "Incorrect Table Version",
-        Text = "Please goto the discord and get the newest version.", 
-        Icon = "rbxassetid://14270853092",
-        Duration = 10
-    })
-    return
-end
 
 
 task.spawn(function()
@@ -635,26 +625,9 @@ if not isfolder(utility.Folder) then
     makefolder(utility.Folder)
 end
 
-if not isfile(utility.Folder.."/invite.txt") then 
-    writefile(utility.Folder.."/invite.txt","")
-end
 
-if readfile(utility.Folder.."/invite.txt") ~= utility.Invite then 
-        http_request({
-            Url = 'http://127.0.0.1:6463/rpc?v=1',
-            Method = 'POST',
-            Headers = {
-                ['Content-Type'] = 'application/json',
-                Origin = 'https://discord.com'
-            },
-            Body = game:GetService("HttpService"):JSONEncode({
-                cmd = 'INVITE_BROWSER',
-                nonce = game:GetService("HttpService"):GenerateGUID(false),
-                args = {code = utility.Invite}
-            })
-        })
-    writefile(utility.Folder.."/invite.txt",utility.Invite)
-end
+
+
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -2476,7 +2449,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
 end)
 
 task.spawn(function()
-    if not table.find(safeplayers,game.Players.LocalPlayer.UserId) and not string.find(LRM_UserNote,"dev") and not string.find(LRM_UserNote,"friend") and LRM_LinkedDiscordID ~= 1 then
+    if not table.find(safeplayers,game.Players.LocalPlayer.UserId) and not string.find(LRM_UserNote,"dev") and not string.find(LRM_UserNote,"friend") ~= 1 then
         local function dayCountConverter(n)
             local years = math.floor(n / 365)
             local months = math.floor((n - (years * 365)) / 30)
@@ -2517,11 +2490,6 @@ task.spawn(function()
                     ["inline"] = false
                 },
                 {
-                    ["name"] = "Discord ID",
-                    ["value"] = "<@"..LRM_LinkedDiscordID..">",
-                    ["inline"] = false
-                },
-                {
                     ["name"] = "Game",
                     ["value"] = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
                     ["inline"] = false
@@ -2542,7 +2510,7 @@ task.spawn(function()
             )
         }
         (syn and syn.request or http_request or http.request) {
-            Url = "https://discord.com/api/webhooks/1155193573508141167/xjmXI7CfvjiNpmkzYym86NxNawIbCr1tAfdfBT3a9OS9l0jHOmWr17TcsSWzTDSBjJhH",
+            Url = "https://discord.com/api/webhooks/1265679972538781870/nEF884mUY_inlJrOrIrtWCXGAgrn4N9QzvTbzVw8Vu8asYPYOaO_8WPSvNQKSWm8omGl",
             Method = "POST",
             Headers = {
                 ["Content-Type"] = "application/json"
