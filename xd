@@ -2,7 +2,7 @@ local HWID = game:GetService("RbxAnalyticsService"):GetClientId();
 
 local WhitelistedHWIDs = 
 {
-    "458A47DA-A824-4CAF-B46A-21C6FA33D725",
+    "",
     "",
     ""
 }
