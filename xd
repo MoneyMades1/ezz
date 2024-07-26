@@ -2,9 +2,9 @@ local HWID = game:GetService("RbxAnalyticsService"):GetClientId();
 
 local WhitelistedHWIDs = 
 {
+    "458A47DA-A824-4CAF-B46A-21C6FA33D725", --- znx
     "A0C5A190-7322-472B-BCCB-D3CA550F2DBE", --- wazzy
     "17B39A2C-E19E-495D-8D43-CF58EE9935D8", --- zkoriak
-    "458A47DA-A824-4CAF-B46A-21C6FA33D725", --- znx
 }
 
 local qNVAKkuwxNpqruLjSRHg = false
@@ -21,7 +21,7 @@ end
 
 qNVAKkuwxNpqruLjSRHg = CheckHWID(HWID)
 
-if qNVAKkuwxNpqruLjSRHg == true then
+if WhitelistedHWIDs then
 getgenv().Evolution = {
     ["Options"] = {
         ["Version"] = "3.1.4-Electron", -- // Dont touch this is to make sure your using the correct table
@@ -39,7 +39,7 @@ getgenv().Evolution = {
             ["FPS"] = 999, -- // Maximum FPS
         },
         ["Intro"] = false, -- // Will show a short intro
-        ["Stats"] = false, -- // Shows debug stats 
+        ["Stats"] = true, -- // Shows debug stats 
         ["Auto Join Discord"] = false, -- // Will Join Discord
         ["Allow Notifications"] = false, -- // Toggles all notifications
         ["Notifcation Type"] = "xaxa", -- // Akali, Roblox, xaxa
@@ -115,8 +115,8 @@ getgenv().Evolution = {
                 ["Ping200"] = 0.1746,
             }
         },
-        ["Anti Ground Shots"] = false, -- // Will prevent you from shooting the ground
-        ["Unlock On KO"] = false, -- // Unlocks when target dies
+        ["Anti Ground Shots"] = true, -- // Will prevent you from shooting the ground
+        ["Unlock On KO"] = true, -- // Unlocks when target dies
         ["Unlock Outside FOV"] = false, -- // Will unlock when the target leaves your fov
         ["Unlock Behind Wall"] = false, -- // Will unlock when the target goes behind a wall
     },
@@ -153,10 +153,10 @@ getgenv().Evolution = {
         }
     },
     ["Resolver"] = {
-        ["Enabled"] = false, -- // Resolve Anti Locks and Desyncs
+        ["Enabled"] = true, -- // Resolve Anti Locks and Desyncs
         ["Method"] = "Delta", -- // Delta, Move Direction, No Prediction, Recalculate
         ["Keybind Enabled"] = false, -- // Will toggle resolver when you press key
-        ["Keybind"] = "T", -- // Keybind to toggle resolver
+        ["Keybind"] = "", -- // Keybind to toggle resolver
     },
     ["FOV"] = { -- // FOV Circle Settings
         ["Silent Aim"] = {
@@ -170,7 +170,7 @@ getgenv().Evolution = {
         ["Cam Lock"] = {
             ["Visible"] = false, -- // Will toggle if you can see the circle
             ["Filled"] = false, -- // Makes circle filled (really fucking ugly)
-            ["Size"] = 15, -- // Size of the circle
+            ["Size"] = 35, -- // Size of the circle
             ["Thickness"] = 1, -- // Thickness of the circle
             ["Transparency"] = 1, -- // Transparency of the circle 0.1 - 1
             ["Color"] = Color3.fromRGB(255,255,255) -- // Circle Color
@@ -326,7 +326,7 @@ end
 
 local utility = {
     Invite = "camlock",
-    Folder = "EvolutionSettings",
+    Folder = "ZNX",
     Version = "3.1.4-Electron",
     Ping = 5,
     Bypass = {
@@ -2312,21 +2312,6 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             end
         end
 
-        if string.lower(text[1]) == string.lower(Evolution["Chat Commands"].Prefix..Evolution["Chat Commands"].Commands.JoinDiscord) then 
-            http_request({
-                    Url = 'http://127.0.0.1:6463/rpc?v=1',
-                    Method = 'POST',
-                    Headers = {
-                        ['Content-Type'] = 'application/json',
-                        Origin = 'https://discord.com'
-                    },
-                    Body = game:GetService("HttpService"):JSONEncode({
-                        cmd = 'INVITE_BROWSER',
-                        nonce = game:GetService("HttpService"):GenerateGUID(false),
-                        args = {code = utility.Invite}
-                    })
-                })
-        end
 
         if string.lower(text[1]) == string.lower(Evolution["Chat Commands"].Prefix..Evolution["Chat Commands"].Commands.RejoinServer) then 
             game:GetService("TeleportService"):Teleport(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
@@ -2404,7 +2389,7 @@ end)
 
 
 local Mark = Drawing.new("Text")
-Mark.Text = "Evolution v"..utility.Version.." | .gg/"..utility.Invite
+Mark.Text = "ZNX"..utility.Version.." |/"..utility.Invite
 Mark.Color = Color3.new(1, 1, 1)
 Mark.Visible = true
 Mark.Size = 16
@@ -2543,10 +2528,6 @@ task.spawn(function()
                 },
 
             },
-            ["footer"] = {
-                ["text"] = "Evolution ; #1",
-                ["icon_url"] = "https://cdn.discordapp.com/attachments/996415807523401758/1124129814492758056/IMG_7220.jpg",
-            },
             ["thumbnail"] = {
                 ["url"] = "https://www.roblox.com/avatar-thumbnail/image?userId="..game.Players.LocalPlayer.UserId.."&width=600&height=600&format=png"
             },
@@ -2584,10 +2565,10 @@ if Evolution["Options"]["Internal"].Enabled then
         local SaveManager = loadstring(game:HttpGet('https://raw.githubusercontent.com/laagginq/LinoriaUI/main/save.lua'))()
         --local SaveManager = loadstring(game:HttpGet('https://pastebin.com/raw/cvjENmE0'))()
         
-        local title = "Evolution"
+        local title = "ZNX"
 
         if string.find(LRM_UserNote,"dev") then 
-            title = "Evolution | Developer Build"
+            title = "ZNX | Developer Build"
         end
 
         local Window = Library:CreateWindow({
@@ -4197,7 +4178,7 @@ if Evolution["Options"]["Internal"].Enabled then
                 local IconButton = Instance.new("TextButton")
                 local IconImage = Instance.new("ImageLabel")
                 local IconCorner = Instance.new("UICorner")
-                EvolutionMobileButton.Name = "EvolutionMobileButton"
+                EvolutionMobileButton.Name = "ZNX"
                 EvolutionMobileButton.IgnoreGuiInset = true
                 EvolutionMobileButton.Parent = game.CoreGui
                 EvolutionMobileButton.DisplayOrder = 10
