@@ -7983,7 +7983,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 else
 local players = game:GetService("Players")
 game:GetService("StarterGui"):SetCore("SendNotification", {
-    Title = "Not Whitelisted";
+    Title = "Injection Failed";
     Text = "Failed to Inject";
     Icon = "rbxthumb://type=AvatarHeadShot&id=" .. players.LocalPlayer.UserId .. "&w=180&h=180 true";
     Duration = 7
