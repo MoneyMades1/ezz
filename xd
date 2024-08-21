@@ -4,7 +4,6 @@ local WhitelistedHWIDs =
 {
     "458A47DA-A824-4CAF-B46A-21C6FA33D725", --- znx
     "1543C1BB-B78E-445C-9BCD-C6473A9C037A", --- Silent
-    "3ab47f16-ab8d-48fb-a4a8-aa23d1aefa4d", --- some random ass nigga
     "BC38A42F-53DB-4C50-960B-B7B9DF7C6144", --- Liquid
     "A0C5A190-7322-472B-BCCB-D3CA550F2DBE", --- wazzy
 }
